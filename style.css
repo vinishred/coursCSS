@@ -1,0 +1,161 @@
+/* apprendre les bases de css */
+/* 1 rem = 16px */
+/* mettre un lien pour downloader des styles  */
+@font-face {
+  font-family: font-1;
+  src: url(./assets/IBMPlexSans-MediumItalic.ttf);
+}
+/* pour enlever les styles automatiques du moteur de recherche on sélectionne tout avec * et on lui remet les paramêtres désirés à 0 */
+* {
+  margin: 0;
+  padding: 0;
+  /* on peut identifier tous les éléments en faisant la commande border: 2px solid red; */
+}
+
+body {
+  font-family: font-1;
+  background: url(./assets/montagne.jpg) center/cover;
+  /* 100vh c'est image de la taille complete de l'écran */
+
+  /* on cache les marges pour enlever le scrolling avec overflow: hidden;*/
+}
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 2.5rem;
+  color: rgb(139, 123, 0);
+  text-shadow: 5px 2px 10px rgb(12, 1, 0);
+  text-align: center;
+  font-family: sans-serif;
+}
+main {
+  background: whitesmoke;
+  width: 85%;
+  /* 100vw c'est toute la largeur de l'écran */
+  min-height: 500px;
+  margin: 10px auto;
+  /* les margins et padding sont définies si 2 valeurs 1ere marge haut et bas et 2eme valeur gauche droite
+  si 4 valeurs premiere celle du haut puis droite puis bas puis g */
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 12px rgb(10, 18, 18);
+}
+.positioning,
+.flexbox,
+.grid {
+  border: 2px solid rgb(33, 126, 196);
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.positioning {
+  position: relative;
+}
+#circle {
+  height: 60px;
+  width: 60px;
+  background: skyblue;
+  position: absolute;
+  text-align: center;
+  border-radius: 15px;
+  padding-top: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 100px;
+  z-index: 1;
+  /* on rappelle que plus le z inex est grand plus l'élément passe au premier plan */
+}
+#rectangle {
+  height: 15px;
+  width: 100px;
+  background: slateblue;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* 50% centre le texte au milieu de la page mais faire partir le début de la box au milieu donc on doit faire  un translate */
+  transform: translate(-50%, -50%);
+}
+ul {
+  display: flex;
+  /* pour répartir nos boites de façon homogène sur la page */
+  justify-content: space-around;
+}
+li {
+  list-style-type: none;
+  font-size: 0.7rem;
+  height: 160px;
+  width: 160px;
+  background: turquoise;
+  display: flex;
+  /* pour centrer un élément en flex */
+  align-items: center;
+  justify-content: center;
+}
+.grid-container {
+  /* grace au grid on peut faire display grid et répartir nos éléments ssur la largeur suivant des proportions exemple ci dessous */
+  display: grid;
+  grid-template-columns: 30% 70%;
+  /* on décide de répartir les deux enfants de grid avec un premier élément qui occupe 30% de la page et un deuxième à 70% on aurait pu rajouter un trroisieme etc */
+  padding: 20px;
+}
+.img {
+  text-align: center;
+}
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "i1 i2"
+    "ta ta"
+    "bt bt";
+}
+input,
+textarea {
+  margin: 5px;
+  height: 45px;
+  border: 1px solid darkblue;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-family: font-1;
+}
+#firstname {
+  grid-area: i1;
+}
+#surname {
+  grid-area: i2;
+}
+textarea {
+  grid-area: ta;
+  resize: none;
+}
+input[type="submit"] {
+  grid-area: bt;
+  cursor: pointer;
+  background: cyan;
+}
+input[type="submit"]:hover {
+  background: darkblue;
+  color: white;
+  transition: 1s;
+}
+/* responsive */
+@media screen and (max-width: 850px) {
+  .grid-container {
+    display: block;
+  }
+}
+@media screen and (max-width: 780px) {
+  form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "i1"
+      "i2"
+      "ta"
+      "bt";
+  }
+}
